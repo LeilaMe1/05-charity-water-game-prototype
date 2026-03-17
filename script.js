@@ -33,6 +33,7 @@ function beginProgress() {
 		if (progressPercentage === 100) {
 			clearInterval(progressInterval);
 			progressText.textContent = "progress: 100%";
+			pointsDisplay.textContent = "Points: " + progressPercentage * 10;
 			reset();
 		}
 
@@ -135,7 +136,8 @@ function addNoneObstacle() {
 function removeObstacle() {
 //	currentObstacle = (imagesList.firstElementChild);
 	currentObstacle = allObstacles[currentIndex-1];
-	console.log(currentObstacle);
+	//console.log(currentObstacle);
+//	console.log(progressPercentage);
 	imagesList.removeChild(imagesList.firstElementChild);
 	updateCharacterImage();
 }
@@ -205,7 +207,7 @@ function updateCharacterImage() {
 		return;
 	}
 	else { // holes
-		console.log(currentObstacle);
+		//console.log(currentObstacle);
 		if (isLiquid) {
 			waterholes.style.display = "block";
 		}
@@ -229,7 +231,7 @@ function clearCharacter() {
 
 function gameOver() {
 	clearInterval(progressInterval);
-	gameOverWindow.style.display = "block";
+	//gameOverWindow.style.display = "block";
 	pointsDisplay.textContent = "Points: " + progressPercentage * 10;
 
 	gameOverReset();
