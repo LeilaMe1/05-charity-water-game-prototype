@@ -18,11 +18,14 @@ const imagesDiv = document.getElementById("images");
 let currentIndex = 0;
 let allObstacles = [];
 	
-//const progressInterval;
+const pointsDisplay = document.getElementById("pointsDisplay");
+let progressInterval;
+
+const restartButton = document.getElementById("restartButton");
 
 function beginProgress() {
-	const progressInterval = setInterval(function() {
-	//progressInterval = setInterval(function() {
+	//const progressInterval = setInterval(function() {
+	progressInterval = setInterval(function() {
 		progressPercentage++;
 		progressText.textContent = "progress: " + progressPercentage + "%";
 
@@ -50,10 +53,12 @@ function beginProgress() {
 }
 
 function start() {
+	switchButton.style.display = "block";
 	allObstacles = [];
 	//newAllObstacles();
 	beginProgress();
 	startWindow.style.display = "none";
+	gameOverWindow.style.display = "none";
 	gameWindow.style.display = "block";
 	clearCharacter();
 	//ice.style.display = "none";
@@ -70,9 +75,17 @@ function reset() {
 	isLiquid = true;
 	currentObstacle = "none";
 	switchButton.textContent = "Freeze";
-	startWindow.style.display = "block";
+	//startWindow.style.display = "block";
+	startWindow.style.display = "none";
+	gameOverWindow.style.display = "block";
 	gameWindow.style.display = "none";
 	currentIndex = 0;
+	switchButton.style.display = "block";
+}
+
+function gameOverReset() {
+	reset();
+	switchButton.style.display = "none";
 }
 
 //startButton.addEventListener('click', beginProgress);
@@ -215,8 +228,11 @@ function clearCharacter() {
 }
 
 function gameOver() {
-	//clearInterval(progressInterval);
+	clearInterval(progressInterval);
+	gameOverWindow.style.display = "block";
+	pointsDisplay.textContent = "Points: " + progressPercentage * 10;
 
+	gameOverReset();
 }
 
 /**function newAllObstacles() {
@@ -225,3 +241,4 @@ function gameOver() {
 		allObstacles.push("none");
 	}
 }**/
+restartButton.addEventListener('click', start);

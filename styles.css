@@ -20,7 +20,7 @@ img {
 }
 
 
-#gameWindow {
+#gameWindow, #gameOverWindow {
 	display: none;
 }
 
