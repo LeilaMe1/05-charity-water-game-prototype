@@ -13,3 +13,20 @@ Secondary Colors:
 - Pink:       #F16061
 
 */
+
+img {
+	width: 64px;
+	height: 64px;
+}
+
+
+#gameWindow {
+	display: none;
+}
+
+#imagesList, #images {
+	list-style-type: none;
+	display: flex;
+	padding-inline-start: 0;
+	align-items: center;
+}
